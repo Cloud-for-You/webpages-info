@@ -1,8 +1,10 @@
-// Service Worker pro zachycení všech požadavků a přesměrování na cílovou doménu
-const targetUrl = 'https://www.cfy.cz';
+// Service Worker pro zachycení všech požadavků a přesměrování na cílovou doménu s zachováním cesty
+const targetDomain = 'https://www.cfy.cz';
 
 self.addEventListener('fetch', function(event) {
-    // Zachycení všech požadavků (GET, POST, atd.) a přesměrování na cílovou URL
+    // Zachycení všech požadavků (GET, POST, atd.) a přesměrování na cílovou URL s zachováním cesty
+    const url = new URL(event.request.url);
+    const targetUrl = targetDomain + url.pathname + url.search;
     event.respondWith(
         Response.redirect(targetUrl, 301)
     );

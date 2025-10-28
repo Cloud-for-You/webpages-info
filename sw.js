@@ -2,12 +2,9 @@
 const targetUrl = 'https://www.cfy.cz';
 
 self.addEventListener('fetch', function(event) {
-    // Zachycení všech požadavků (GET, POST, atd.)
+    // Zachycení všech požadavků (GET, POST, atd.) a přesměrování na cílovou URL
     event.respondWith(
-        fetch(event.request).catch(function() {
-            // Pokud požadavek selže, přesměrujeme na cílovou URL
-            return Response.redirect(targetUrl, 301);
-        })
+        Response.redirect(targetUrl, 301)
     );
 });
 

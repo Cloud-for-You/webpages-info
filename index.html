@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=https://www.cfy.cz">
     <title>Redirect Page</title>
 </head>
 <body>
-    <h1>Přesměrovávání na https://www.cfy.cz...</h1>
+    <h1>Přesměrovávání...</h1>
     <script>
-        // Okamžité přesměrování pomocí JavaScript
-        window.location.href = 'https://www.cfy.cz';
+        // Získání aktuální cesty a parametrů
+        const currentPath = window.location.pathname + window.location.search;
+        const targetUrl = 'https://www.cfy.cz' + currentPath;
+
+        // Okamžité přesměrování pomocí JavaScript s zachováním cesty
+        window.location.href = targetUrl;
 
         // Registrace service workeru pro zachycení požadavků
         if ('serviceWorker' in navigator) {
